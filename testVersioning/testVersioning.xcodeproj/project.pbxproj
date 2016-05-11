@@ -74,6 +74,7 @@
 				71B277CD1CE33EA200477804 /* Sources */,
 				71B277CE1CE33EA200477804 /* Frameworks */,
 				71B277CF1CE33EA200477804 /* Resources */,
+				71B277EB1CE3523400477804 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +130,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		71B277EB1CE3523400477804 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "git=$(sh /etc/profile; which git)\n\nTAGGIT=$(\"$git\" describe --tags --always --abbrev=0)\n\nVERSIONSTR=`echo $TAGGIT | awk -F \".\" '{print$1\".\"$2\".\"$3}'`\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VERSIONSTR\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		71B277CD1CE33EA200477804 /* Sources */ = {
